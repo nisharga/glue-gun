@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import CustomLink from "../CustomLink/CustomLink";
 import "./Nav.css";
@@ -11,7 +12,7 @@ const Nav = () => {
             <nav className="navbar navbar-expand-lg navbar-light">
               <div className="container-fluid">
                 <Link to="/" className="navbar-brand">
-                  GLUE GUN
+                  <FontAwesomeIcon icon="gun" /> GLUE GUN
                 </Link>
                 <button
                   className="navbar-toggler"

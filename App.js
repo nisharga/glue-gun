@@ -4,6 +4,7 @@ import Nav from "./Shared/Nav/Nav";
 import Homepage from "./Pages/Homepage/Homepage";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
+import Footer from "./Shared/Footer/Footer";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signup" element={"signup />"} />
         <Route path="/login" element={"login />"} />
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
