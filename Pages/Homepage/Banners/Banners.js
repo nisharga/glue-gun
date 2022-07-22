@@ -14,6 +14,7 @@ const Banners = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    lazyLoad: true,
   };
   return (
     <div className="slider mb-5">

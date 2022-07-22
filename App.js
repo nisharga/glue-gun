@@ -2,7 +2,15 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Nav from "./Shared/Nav/Nav";
 import Homepage from "./Pages/Homepage/Homepage";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import * as Icons from "@fortawesome/free-solid-svg-icons";
 function App() {
+  // / font awesome global declear
+  const iconList = Object.keys(Icons)
+    .filter((key) => key !== "fas" && key !== "prefix")
+    .map((icon) => Icons[icon]);
+  library.add(...iconList);
+  // font awesome global declear
   return (
     <div>
       <Nav></Nav>
