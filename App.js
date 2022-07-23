@@ -5,6 +5,10 @@ import Homepage from "./Pages/Homepage/Homepage";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Shared/Footer/Footer";
+import Signup from "./Pages/Signup/Signup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ForgotPass from "./Pages/Signup/ForgotPass/ForgotPass";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -20,10 +24,12 @@ function App() {
         <Route path="/blog" element={"<BLog />"} />
         <Route path="/about" element={"About />"} />
         <Route path="/checkout" element={"checkout />"} />
-        <Route path="/signup" element={"signup />"} />
-        <Route path="/login" element={"login />"} />
+        <Route path="/signup" element={<Signup></Signup>} />
+        <Route path="/forgotpass" element={<ForgotPass></ForgotPass>} />
+        {/* <Route path="/login" element={<Login></Login>} /> */}
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
