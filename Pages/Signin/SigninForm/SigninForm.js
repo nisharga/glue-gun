@@ -1,37 +1,42 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import auth from "../../../Shared/Firebase/Auth";
 import { useForm } from "react-hook-form";
-
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-
-import { useSendEmailVerification } from "react-firebase-hooks/auth";
-
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { useNavigate, useLocation } from "react-router-dom";
+import auth from "../../../Shared/Firebase/Auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
-import Spinner from "./../../../Shared/Spinner/Spinner";
 
-const SignupForm = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+const SigninForm = () => {
+  const [signInWithEmailAndPassword, user] =
+    useSignInWithEmailAndPassword(auth);
 
-  const [sendEmailVerification, sending, errorEmailVerify] =
-    useSendEmailVerification(auth);
   const { register, handleSubmit } = useForm();
-
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
-    createUserWithEmailAndPassword(email, password);
-    sendEmailVerification();
+    signInWithEmailAndPassword(email, password);
   };
+
   if (user) {
-    toast("Account Successfully create, check email for verify");
+    toast(" Successfully login");
   }
+
+  // Redirect to that from page
+  let navigate = useNavigate();
+  let location = useLocation();
+  const [userEmail] = useAuthState(auth);
+  let from = location.state?.from?.pathname || "/";
+  if (user || userEmail) {
+    navigate(from, { replace: true });
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-group mb-3">
-        <div className="input-group-append emailicon">
+        <div className="input-group-append">
           <span className="input-group-text">
             <FontAwesomeIcon icon="fa-solid fa-envelope" />
           </span>
@@ -45,7 +50,7 @@ const SignupForm = () => {
         />
       </div>
       <div className="input-group mb-2">
-        <div className="input-group-append passicon">
+        <div className="input-group-append">
           <span className="input-group-text">
             <FontAwesomeIcon icon="fa-solid fa-key" />
           </span>
@@ -58,13 +63,10 @@ const SignupForm = () => {
           {...register("password", { required: true })}
         />
       </div>
-      {sending || loading ? <Spinner></Spinner> : ""}
-      {error ? <p>{error.message}</p> : ""}
-      {errorEmailVerify ? <p>{errorEmailVerify.message}</p> : ""}
       <div className="d-flex justify-content-center mt-3 login_container">
         <input
           type="submit"
-          value={`SignUp`}
+          value="SignIn"
           name="button"
           className="btn login_btn"
         />
@@ -73,4 +75,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default SigninForm;

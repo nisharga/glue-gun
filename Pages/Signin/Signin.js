@@ -1,10 +1,10 @@
 import React from "react";
-import "./Signup.css";
-import SignupForm from "./SignupForm/SignupForm";
+import "../Signup/Signup.css";
+import glugunImage from "../Signup/glu.png";
+import GoogleSignIn from "./GoogleSignIn/GoogleSignIn";
+import SigninForm from "./SigninForm/SigninForm";
 import { Link } from "react-router-dom";
-import glugunImage from "./glu.png";
-import GoogleSignIn from "../Signin/GoogleSignIn/GoogleSignIn";
-const Signup = () => {
+const Signin = () => {
   return (
     <>
       <div className="signupsection">
@@ -17,14 +17,14 @@ const Signup = () => {
                 </div>
               </div>
               <div className="d-flex justify-content-center form_container">
-                <SignupForm></SignupForm>
+                <SigninForm></SigninForm>
               </div>
 
               <div className="mt-4">
                 <div className="d-flex justify-content-center links">
                   Don't have an account?
-                  <Link to="/login" className="ml-2">
-                    Sign In
+                  <Link to="/Signup" className="ml-2">
+                    Sign Up
                   </Link>
                 </div>
                 <div className="d-flex justify-content-center links">
@@ -40,4 +40,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;

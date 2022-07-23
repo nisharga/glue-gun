@@ -1,9 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import CustomLink from "../CustomLink/CustomLink";
+import auth from "../Firebase/Auth";
 import "./Nav.css";
 
 const Nav = () => {
+  const [user] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
   return (
     <div className="header bg-light">
       <div className="container">
@@ -63,9 +70,11 @@ const Nav = () => {
                       </CustomLink>
                     </li>
                     <li className="nav-item">
-                      <CustomLink to="/signup" className="nav-link">
-                        Sign Up
-                      </CustomLink>
+                      {user && (
+                        <button onClick={logout} className="logout">
+                          LogOut<i className="fa fa-sign-out"></i>
+                        </button>
+                      )}
                     </li>
                   </ul>
                 </div>

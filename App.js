@@ -9,6 +9,7 @@ import Signup from "./Pages/Signup/Signup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotPass from "./Pages/Signup/ForgotPass/ForgotPass";
+import Signin from "./Pages/Signin/Signin";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -26,7 +27,7 @@ function App() {
         <Route path="/checkout" element={"checkout />"} />
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/forgotpass" element={<ForgotPass></ForgotPass>} />
-        {/* <Route path="/login" element={<Login></Login>} /> */}
+        <Route path="/login" element={<Signin></Signin>} />
       </Routes>
       <Footer></Footer>
       <ToastContainer />
