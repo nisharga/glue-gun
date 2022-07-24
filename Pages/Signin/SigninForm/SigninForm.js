@@ -36,7 +36,7 @@ const SigninForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-group mb-3">
-        <div className="input-group-append">
+        <div className="input-group-append emailicon">
           <span className="input-group-text">
             <FontAwesomeIcon icon="fa-solid fa-envelope" />
           </span>
@@ -50,7 +50,7 @@ const SigninForm = () => {
         />
       </div>
       <div className="input-group mb-2">
-        <div className="input-group-append">
+        <div className="input-group-append passicon">
           <span className="input-group-text">
             <FontAwesomeIcon icon="fa-solid fa-key" />
           </span>

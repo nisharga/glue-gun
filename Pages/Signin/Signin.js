@@ -4,9 +4,11 @@ import glugunImage from "../Signup/glu.png";
 import GoogleSignIn from "./GoogleSignIn/GoogleSignIn";
 import SigninForm from "./SigninForm/SigninForm";
 import { Link } from "react-router-dom";
+import PageTitle from "./../../Shared/PageTitle/PageTitle";
 const Signin = () => {
   return (
     <>
+      <PageTitle pagetitle="Signin"></PageTitle>
       <div className="signupsection">
         <div className="container h-100">
           <div className="d-flex justify-content-center h-100">

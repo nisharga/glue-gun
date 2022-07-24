@@ -60,14 +60,18 @@ const Nav = () => {
                     </li>
 
                     <li className="nav-item">
-                      <CustomLink to="/signup" className="nav-link">
-                        Sign Up
-                      </CustomLink>
+                      {!user && (
+                        <CustomLink to="/signup" className="nav-link">
+                          Sign Up
+                        </CustomLink>
+                      )}
                     </li>
                     <li className="nav-item">
-                      <CustomLink to="/signup" className="nav-link">
-                        Sign Up
-                      </CustomLink>
+                      {user && (
+                        <CustomLink to="/dashboard" className="nav-link">
+                          Dashboard
+                        </CustomLink>
+                      )}
                     </li>
                     <li className="nav-item">
                       {user && (

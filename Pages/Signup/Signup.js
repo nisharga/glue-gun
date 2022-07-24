@@ -4,9 +4,11 @@ import SignupForm from "./SignupForm/SignupForm";
 import { Link } from "react-router-dom";
 import glugunImage from "./glu.png";
 import GoogleSignIn from "../Signin/GoogleSignIn/GoogleSignIn";
+import PageTitle from "../../Shared/PageTitle/PageTitle";
 const Signup = () => {
   return (
     <>
+      <PageTitle pagetitle="SignUp"></PageTitle>
       <div className="signupsection">
         <div className="container h-100">
           <div className="d-flex justify-content-center h-100">
@@ -22,7 +24,7 @@ const Signup = () => {
 
               <div className="mt-4">
                 <div className="d-flex justify-content-center links">
-                  Don't have an account?
+                  Already have an account?
                   <Link to="/login" className="ml-2">
                     Sign In
                   </Link>
