@@ -4,16 +4,18 @@ import Banners from "./Banners/Banners";
 import BusinessSummary from "./BusinessSummary/BusinessSummary";
 import ToolsPart from "./ToolsPart/ToolsPart";
 import Reviews from "./Reviews/Reviews";
+import AskQuestion from "./AskQuestion/AskQuestion";
+import GetInTouch from "./GetInTouch/GetInTouch";
 
 const Homepage = () => {
   return (
     <div>
       <Banners></Banners>
       <ToolsPart></ToolsPart>
-
       <BusinessSummary></BusinessSummary>
       <Reviews></Reviews>
-      <h2>Hello</h2>
+      <AskQuestion></AskQuestion>
+      <GetInTouch></GetInTouch>
     </div>
   );
 };

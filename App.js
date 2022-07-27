@@ -16,6 +16,7 @@ import Nav from "./Shared/Nav/Nav";
 import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 import Myprofile from "./Pages/Dashboard/Myprofile/Myprofile";
 import NotFound from "./Shared/NotFound/NotFound";
+import AddProduct from "./Pages/AddProduct/AddProduct";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -35,6 +36,7 @@ function App() {
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/forgotpass" element={<ForgotPass></ForgotPass>} />
         <Route path="/login" element={<Signin></Signin>} />
+        <Route path="/addproduct" element={<AddProduct></AddProduct>} />
         <Route path="*" element={<NotFound />} />
         <Route
           path="dashboard"

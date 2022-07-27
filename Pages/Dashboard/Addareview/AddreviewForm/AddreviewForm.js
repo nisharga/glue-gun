@@ -9,15 +9,14 @@ const AddreviewForm = ({ email }) => {
     const reivewcomments = data.reivewcomments;
     const reivewrating = data.reivewrating;
     console.log(reivewtitle, reivewcomments, reivewrating);
-    fetch(`http://localhost:5000/dashboard/addareview/${email}`, {
+    // save signup information in database
+    fetch("http://localhost:5000/addproduct", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         reivewtitle: reivewtitle,
-        reivewcomments: reivewcomments,
-        reivewrating: reivewrating,
       }),
     })
       .then((response) => response.json())
@@ -27,6 +26,7 @@ const AddreviewForm = ({ email }) => {
       .catch((error) => {
         console.error("Error:", error);
       });
+    // endsave signup information in database
     e.preventDefault();
   };
   return (

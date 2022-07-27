@@ -9,19 +9,13 @@ const SocialLinks = () => {
         <img src="./assets/images/about/home_line.png" alt="" />
         <div className="social-icons">
           <li>
-            <Link to="/">
-              <i className="fa-brands fa-facebook-f"></i> Facebook
-            </Link>
+            <Link to="/">Facebook</Link>
           </li>
           <li>
-            <Link to="/">
-              <i className="fa-brands fa-instagram"></i> Instagram
-            </Link>
+            <Link to="/">Instagram</Link>
           </li>
           <li>
-            <Link to="/">
-              <i className="fa-brands fa-linkedin-in"></i> Linkedin
-            </Link>
+            <Link to="/">Linkedin</Link>
           </li>
         </div>
       </div>

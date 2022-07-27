@@ -5,7 +5,7 @@ const CopyRight = () => {
     <div id="copy-right">
       <div className="copy-right-sec">
         <i className="fa-solid fa-copyright"></i>
-        All rights reserved 2022 Powerd By <Link to="/">iPower</Link>
+        All rights reserved 2022 Powerd By <Link to="/">glugun</Link>
       </div>
     </div>
   );

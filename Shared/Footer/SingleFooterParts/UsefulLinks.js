@@ -18,8 +18,8 @@ const UsefulLinks = () => {
             </Link>
           </li>
           <li>
-            <Link to="/inventory">
-              <i className="fa-solid fa-angles-right"></i> Inventory
+            <Link to="/portfolio">
+              <i className="fa-solid fa-angles-right"></i> Portfolio
             </Link>
           </li>
           <li>
