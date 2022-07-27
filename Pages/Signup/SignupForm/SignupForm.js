@@ -4,7 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import auth from "../../../Shared/Firebase/Auth";
 import { useForm } from "react-hook-form";
 
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 
 import { useSendEmailVerification } from "react-firebase-hooks/auth";
 
@@ -18,18 +21,52 @@ const SignupForm = () => {
   const [sendEmailVerification, sending, errorEmailVerify] =
     useSendEmailVerification(auth);
   const { register, handleSubmit } = useForm();
+  const [updateProfile] = useUpdateProfile(auth);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const email = data.email;
     const password = data.password;
-    createUserWithEmailAndPassword(email, password);
-    sendEmailVerification();
+    const username = data.username;
+    await createUserWithEmailAndPassword(email, password);
+    await sendEmailVerification();
+    await updateProfile({ displayName: username });
+    // save signup information in database
+    fetch("http://localhost:5000/user", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, username: username }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // endsave signup information in database
   };
   if (user) {
     toast("Account Successfully create, check email for verify");
   }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="input-group mb-3">
+        <div className="input-group-append emailicon">
+          <span className="input-group-text">
+            <FontAwesomeIcon icon="fa-solid fa-envelope" />
+          </span>
+        </div>
+        <input
+          {...register("username", { required: true })}
+          type="text"
+          name="username"
+          className="form-control input_user"
+          placeholder="username"
+        />
+      </div>
       <div className="input-group mb-3">
         <div className="input-group-append emailicon">
           <span className="input-group-text">

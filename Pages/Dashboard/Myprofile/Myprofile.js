@@ -6,9 +6,10 @@ import PageTitle from "../../../Shared/PageTitle/PageTitle";
 import verifed from "./verify.svg";
 import notverifed from "./notverify.png";
 import Spinner from "../../../Shared/Spinner/Spinner";
+import Profileform from "./Profileform/Profileform";
+import "./Myprofile.css";
 const Myprofile = () => {
   const [user, loading, error] = useAuthState(auth);
-  console.log(user);
   return (
     <>
       <PageTitle pagetitle="Dashboard"></PageTitle>
@@ -45,26 +46,7 @@ const Myprofile = () => {
               </div>
               {loading && <Spinner></Spinner>}
               <p>{error && error.message}</p>
-              <p>
-                My profile the needle inclusive improve the world white paper
-                uplift co-create NGO thought provoking strengthening
-                infrastructure. Leverage external partners move the needle
-                energize save the world changemaker shared unit of analysis our
-                work communities. Capacity building save the world shine
-                commitment; deep dive low-hanging fruit innovate, indicators
-                thought leader co-create because disrupt game-changer.
-              </p>
-
-              <p>
-                Energize; energize global, social entrepreneurship social
-                entrepreneur. Outcomes citizen-centered empathetic boots on the
-                ground design thinking thought partnership but leverage
-                co-creation save the world. Mobilize, communities; when
-                movements, scale and impact scale and impact; agile then thought
-                partnership state of play support. Capacity building empower
-                communities, engaging social intrapreneurship, natural resources
-                triple bottom line thought leadership or design thinking.
-              </p>
+              <Profileform></Profileform>
             </div>
           </div>
         </div>

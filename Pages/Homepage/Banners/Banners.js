@@ -1,10 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
 import "./Banners.css";
-import bannar0 from "./img/bannar0.jpg";
-import bannar1 from "./img/bannar1.jpg";
-import bannar2 from "./img/bannar2.jpg";
-import bannar3 from "./img/bannar3.jpg";
+import bannar4 from "./img/glu4.jpg";
+import bannar0 from "./img/glu3.jpg";
+import bannar1 from "./img/glu2.jpg";
+import bannar2 from "./img/glu1.jpg";
 
 const Banners = () => {
   const settings = {
@@ -22,10 +22,10 @@ const Banners = () => {
         <div className="row">
           <div className="col-md-12">
             <Slider {...settings}>
-              <img src={bannar3} alt="" className="sliderImage" />
               <img src={bannar0} alt="" className="sliderImage" />
               <img src={bannar2} alt="" className="sliderImage" />
               <img src={bannar1} alt="" className="sliderImage" />
+              <img src={bannar4} alt="" className="sliderImage" />
             </Slider>
           </div>
         </div>

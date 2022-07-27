@@ -5,10 +5,32 @@ import auth from "./../../../Shared/Firebase/Auth";
 import { useLocation, useNavigate } from "react-router-dom";
 const GoogleSignIn = () => {
   const [signInWithGoogle, user] = useSignInWithGoogle(auth);
-  const handleGoogleSignIN = () => {
-    signInWithGoogle();
+  const handleGoogleSignIN = async () => {
+    await signInWithGoogle();
   };
-
+  console.log(handleGoogleSignIN);
+  const [userFormGoogle] = useAuthState(auth);
+  if (userFormGoogle) {
+    // save signup information in database
+    fetch("http://localhost:5000/user", {
+      method: "PUT", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: userFormGoogle.email,
+        username: userFormGoogle.displayName,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // endsave signup information in database
+  }
   // Redirect to that from page
   let navigate = useNavigate();
   let location = useLocation();

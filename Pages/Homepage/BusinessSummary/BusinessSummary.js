@@ -20,7 +20,7 @@ const BusinessSummary = () => {
     { id: 3, icon: "star", counter: 35, itemtext: "Reviews", quantity: "K+" },
     {
       id: 4,
-      icon: "screwdriver-wrench",
+      icon: "tools",
       counter: 50,
       itemtext: "tools",
       quantity: "+",
