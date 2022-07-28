@@ -8,7 +8,6 @@ const GoogleSignIn = () => {
   const handleGoogleSignIN = async () => {
     await signInWithGoogle();
   };
-  console.log(handleGoogleSignIN);
   const [userFormGoogle] = useAuthState(auth);
   if (userFormGoogle) {
     // save signup information in database
