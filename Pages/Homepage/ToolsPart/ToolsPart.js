@@ -1,7 +1,10 @@
 import React from "react";
 import "./ToolsPart.css";
 import SingleTools from "./SingleTools/SingleTools";
+import useProduct from "../../../Hooks/useProduct/useProduct";
 const ToolsPart = () => {
+  const [product] = useProduct();
+
   return (
     <div className="featureProduct">
       <h2 className="featureTitle">
@@ -9,12 +12,9 @@ const ToolsPart = () => {
       </h2>
       <div className="container">
         <div className="row">
-          <SingleTools></SingleTools>
-          <SingleTools></SingleTools>
-          <SingleTools></SingleTools>
-          <SingleTools></SingleTools>
-          <SingleTools></SingleTools>
-          <SingleTools></SingleTools>
+          {product?.map((data) => (
+            <SingleTools key={data._id} data={data}></SingleTools>
+          ))}
         </div>
       </div>
     </div>

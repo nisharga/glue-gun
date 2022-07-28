@@ -1,0 +1,8 @@
+.animation_wrapper{
+    text-align:center;
+}
+.animation_wrapper svg{
+    margin: 0 auto;
+    width:63%;
+    height:auto;
+  }

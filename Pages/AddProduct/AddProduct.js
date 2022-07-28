@@ -28,7 +28,7 @@ const AddProduct = () => {
       description
     );
     // save signup information in database
-    fetch("http://localhost:5000/addproduct", {
+    fetch("https://glacial-sierra-36711.herokuapp.com/addproduct", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

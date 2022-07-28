@@ -8,15 +8,19 @@ const AddreviewForm = ({ email }) => {
     const reivewtitle = data.reivewtitle;
     const reivewcomments = data.reivewcomments;
     const reivewrating = data.reivewrating;
-    console.log(reivewtitle, reivewcomments, reivewrating);
-    // save signup information in database
-    fetch("http://localhost:5000/addproduct", {
+    const email = data.email;
+
+    // save review information in database
+    fetch("http://localhost:5000/dashboard/addareview", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         reivewtitle: reivewtitle,
+        reivewcomments: reivewcomments,
+        reivewrating: reivewrating,
+        email: email,
       }),
     })
       .then((response) => response.json())
@@ -26,7 +30,7 @@ const AddreviewForm = ({ email }) => {
       .catch((error) => {
         console.error("Error:", error);
       });
-    // endsave signup information in database
+    // endsave review information in database
     e.preventDefault();
   };
   return (
@@ -77,6 +81,22 @@ const AddreviewForm = ({ email }) => {
                 name="reivewrating"
                 placeholder="Reivew Rating"
                 className="form-control input-md"
+              />
+            </div>
+          </div>
+
+          <div className="form-group mt-3 mb-3">
+            <label className="col-md-12 control-label" htmlFor="email">
+              Email
+            </label>
+            <div className="col-md-12">
+              <input
+                {...register("email")}
+                name="email"
+                placeholder="email"
+                className="form-control input-md"
+                value={email}
+                disabled
               />
             </div>
           </div>

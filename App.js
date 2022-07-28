@@ -17,6 +17,7 @@ import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 import Myprofile from "./Pages/Dashboard/Myprofile/Myprofile";
 import NotFound from "./Shared/NotFound/NotFound";
 import AddProduct from "./Pages/AddProduct/AddProduct";
+import Purchase from "./Pages/Purchase/Purchase";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -38,6 +39,14 @@ function App() {
         <Route path="/login" element={<Signin></Signin>} />
         <Route path="/addproduct" element={<AddProduct></AddProduct>} />
         <Route path="*" element={<NotFound />} />
+        <Route
+          path="purchase/:id"
+          element={
+            <RequireAuth redirectTo="/login">
+              <Purchase></Purchase>
+            </RequireAuth>
+          }
+        ></Route>
         <Route
           path="dashboard"
           element={

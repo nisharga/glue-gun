@@ -5,7 +5,7 @@ import BusinessSummary from "./BusinessSummary/BusinessSummary";
 import ToolsPart from "./ToolsPart/ToolsPart";
 import Reviews from "./Reviews/Reviews";
 import AskQuestion from "./AskQuestion/AskQuestion";
-import GetInTouch from "./GetInTouch/GetInTouch";
+import Newsletter from "./Newsletter/Newsletter";
 
 const Homepage = () => {
   return (
@@ -15,7 +15,7 @@ const Homepage = () => {
       <BusinessSummary></BusinessSummary>
       <Reviews></Reviews>
       <AskQuestion></AskQuestion>
-      <GetInTouch></GetInTouch>
+      <Newsletter></Newsletter>
     </div>
   );
 };
