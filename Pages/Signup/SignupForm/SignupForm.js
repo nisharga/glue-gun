@@ -56,7 +56,7 @@ const SignupForm = () => {
       <div className="input-group mb-3">
         <div className="input-group-append emailicon">
           <span className="input-group-text">
-            <FontAwesomeIcon icon="fa-solid fa-envelope" />
+            <FontAwesomeIcon icon="fa-solid fa-user" />
           </span>
         </div>
         <input

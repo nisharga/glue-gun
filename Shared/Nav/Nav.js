@@ -48,14 +48,8 @@ const Nav = () => {
                       </CustomLink>
                     </li>
                     <li className="nav-item">
-                      <CustomLink to="/about" className="nav-link">
-                        About Us
-                      </CustomLink>
-                    </li>
-
-                    <li className="nav-item">
-                      <CustomLink to="/checkout" className="nav-link">
-                        Checkout
+                      <CustomLink to="/portfolio" className="nav-link">
+                        Portfolio
                       </CustomLink>
                     </li>
 

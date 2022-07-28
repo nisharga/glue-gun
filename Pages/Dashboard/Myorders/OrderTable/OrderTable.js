@@ -5,25 +5,26 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const OrderTable = ({ val, index }) => {
-  const { _id, productName } = val;
+  const { _id, productName, totalPrice } = val;
+
   const handleDelet = (id) => {
     confirmAlert({
-      title: "Confirm to DELET",
-      message: "Are you sure to do Delet.",
+      title: "Confirm to Cancel Order",
+      message: "Are you sure to Cancel this order?",
       buttons: [
         {
           label: "Yes",
           onClick: () => {
-            // fetch(`https://quiet-temple-29937.herokuapp.com/myitems/${id}`, {
-            //   method: "DELETE",
-            // })
-            //   .then((res) => res.json())
-            //   .then((val) => {
-            //     if (val.deletedCount > 0) {
-            //       console.log(val, "val deleted");
-            //     }
-            //   });
-            // window.location.reload();
+            fetch(`http://localhost:5000/myitems/${_id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.json())
+              .then((val) => {
+                if (val.deletedCount > 0) {
+                  console.log(val, "val deleted");
+                  window.location.reload();
+                }
+              });
           },
         },
         {
@@ -37,7 +38,8 @@ const OrderTable = ({ val, index }) => {
     <tr>
       <td>{index}</td>
       <td>{productName}</td>
-      <td>"price"</td>
+      <td>{totalPrice}</td>
+      <td>PENDING</td>
       <td>
         <button onClick={() => handleDelet("ds")}>
           <FontAwesomeIcon icon={faTrash} />

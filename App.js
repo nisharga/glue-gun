@@ -18,6 +18,8 @@ import Myprofile from "./Pages/Dashboard/Myprofile/Myprofile";
 import NotFound from "./Shared/NotFound/NotFound";
 import AddProduct from "./Pages/AddProduct/AddProduct";
 import Purchase from "./Pages/Purchase/Purchase";
+import Portfolio from "./Pages/Portfolio/Portfolio";
+import Blogs from "./Pages/Blogs/Blogs";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -31,9 +33,8 @@ function App() {
       <Nav></Nav>
       <Routes>
         <Route path="/" element={<Homepage></Homepage>} />
-        <Route path="/blog" element={"<BLog />"} />
-        <Route path="/about" element={"About />"} />
-        <Route path="/checkout" element={"checkout />"} />
+        <Route path="/blogs" element={<Blogs></Blogs>} />
+        <Route path="/portfolio" element={<Portfolio></Portfolio>} />
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/forgotpass" element={<ForgotPass></ForgotPass>} />
         <Route path="/login" element={<Signin></Signin>} />

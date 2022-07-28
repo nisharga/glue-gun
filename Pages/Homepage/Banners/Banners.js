@@ -17,7 +17,7 @@ const Banners = () => {
     lazyLoad: true,
   };
   return (
-    <div className="slider mb-5">
+    <div className="slider ">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">

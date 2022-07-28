@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import ReactStars from "react-stars";
+import { toast } from "react-toastify";
 const AddreviewForm = ({ email }) => {
+  const [reivewrating, setReivewrating] = useState();
+  const ratingChanged = (newRating) => {
+    setReivewrating(newRating);
+  };
   // dashboard/addareview
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, e) => {
     const reivewtitle = data.reivewtitle;
     const reivewcomments = data.reivewcomments;
-    const reivewrating = data.reivewrating;
-    const email = data.email;
-
+    const rating = reivewrating;
+    const useremail = email;
     // save review information in database
     fetch("http://localhost:5000/dashboard/addareview", {
       method: "POST", // or 'PUT'
@@ -19,26 +23,44 @@ const AddreviewForm = ({ email }) => {
       body: JSON.stringify({
         reivewtitle: reivewtitle,
         reivewcomments: reivewcomments,
-        reivewrating: reivewrating,
-        email: email,
+        rating: rating,
+        useremail: useremail,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        toast("Sucessfully Add a review");
       })
       .catch((error) => {
         console.error("Error:", error);
       });
     // endsave review information in database
     e.preventDefault();
+    toast("Review Added succesfully");
+    e.target.reset();
   };
   return (
     <div>
-      <h2>Add Review Email is: {email}</h2>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <fieldset>
           <legend>ADD A REVIEW</legend>
+
+          <div className="form-group mt-3 mb-3">
+            <label className="col-md-12 control-label" htmlFor="reivewrating">
+              Reivew Rating(Out of 5) - You give{reivewrating}
+            </label>
+            <div className="col-md-12">
+              <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                color2={"#ffd700"}
+                className="form-control"
+              />
+            </div>
+          </div>
+
           <div className="form-group mt-3 mb-3">
             <label className="col-md-12 control-label" htmlFor="reivewtitle">
               Reivew Title
@@ -62,24 +84,6 @@ const AddreviewForm = ({ email }) => {
                 {...register("reivewcomments")}
                 name="reivewcomments"
                 placeholder="Review Comment"
-                className="form-control input-md"
-              />
-            </div>
-          </div>
-
-          <div className="form-group mt-3 mb-3">
-            <label className="col-md-12 control-label" htmlFor="reivewrating">
-              Reivew Rating(Out of 5)
-            </label>
-            <div className="col-md-12">
-              <input
-                type="number"
-                maxlength="0.5"
-                min="0"
-                max="5"
-                {...register("reivewrating")}
-                name="reivewrating"
-                placeholder="Reivew Rating"
                 className="form-control input-md"
               />
             </div>

@@ -50,8 +50,9 @@ const Myorders = () => {
                         <tr>
                           <th scope="col">No</th>
                           <th scope="col">Product Name</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Delet Item</th>
+                          <th scope="col">Total Price</th>
+                          <th scope="col">Payment</th>
+                          <th scope="col">Cancel</th>
                         </tr>
                       </thead>
                       <tbody className="text-center">
