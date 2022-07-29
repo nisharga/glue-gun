@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
+import { toast } from "react-toastify";
 import auth from "../../../../Shared/Firebase/Auth";
 
 const Profileform = () => {
@@ -11,44 +12,29 @@ const Profileform = () => {
   const [modal, setModal] = useState(false);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, e) => {
+    const email = user?.email;
     const education = data.education;
     const location = data.location;
     const phone = data.phone;
     const linkedin = data.linkedIn_profile_link;
-    console.log(education, location, phone, linkedin);
-    const email = user.email;
-    // fetch(`http://localhost:5000/user/${email}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     quantity: "newQuantity.toString()",
-    //   }),
-    // {
-    //   education: education,
-    //   location: location,
-    //   phone: phone,
-    //   linkedin: linkedin,
-    // }
-    // })
-    //   .then((response) => response.json())
-    //   .then((json) => console.log(json));
+    // console.log(education, location, phone, linkedin, email);
 
-    fetch(`http://localhost:5000/user/${email}`, {
-      method: "POST", // or 'PUT'
+    fetch(`https://glacial-sierra-36711.herokuapp.com/user/${email}`, {
+      method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        "Content-type": "application/json",
       },
-      body: JSON.stringify({ email: "email", username: "username" }),
+      body: JSON.stringify({
+        email: email,
+        education: education,
+        location: location,
+        phone: phone,
+        linkedin: linkedin,
+      }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      .then((json) => console.log(json));
+    toast("Profile Update sucessfully");
     e.preventDefault();
   };
   return (

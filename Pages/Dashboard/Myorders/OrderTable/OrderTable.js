@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { Link } from "react-router-dom";
 
 const OrderTable = ({ val, index }) => {
   const { _id, productName, totalPrice } = val;
@@ -39,7 +40,9 @@ const OrderTable = ({ val, index }) => {
       <td>{index}</td>
       <td>{productName}</td>
       <td>{totalPrice}</td>
-      <td>PENDING</td>
+      <td>
+        <Link to={`/dashboard/myorders/payment/${totalPrice}`}>Pay</Link>
+      </td>
       <td>
         <button onClick={() => handleDelet("ds")}>
           <FontAwesomeIcon icon={faTrash} />

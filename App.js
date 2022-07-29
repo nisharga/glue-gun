@@ -20,6 +20,7 @@ import AddProduct from "./Pages/AddProduct/AddProduct";
 import Purchase from "./Pages/Purchase/Purchase";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import Blogs from "./Pages/Blogs/Blogs";
+import Payment from "./Shared/Payment/Payment";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -45,6 +46,14 @@ function App() {
           element={
             <RequireAuth redirectTo="/login">
               <Purchase></Purchase>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="dashboard/myorders/payment/:id"
+          element={
+            <RequireAuth redirectTo="/login">
+              <Payment></Payment>
             </RequireAuth>
           }
         ></Route>

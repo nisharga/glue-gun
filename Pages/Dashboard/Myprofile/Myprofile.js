@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../Shared/Firebase/Auth";
@@ -10,6 +10,13 @@ import Profileform from "./Profileform/Profileform";
 import "./Myprofile.css";
 const Myprofile = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [userData, setUserData] = useState();
+  fetch(`http://localhost:5000/user/${user?.email}`)
+    .then((response) => response.json())
+    .then((data) => setUserData(data[0]))
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   return (
     <>
       <PageTitle pagetitle="Dashboard"></PageTitle>
@@ -44,6 +51,11 @@ const Myprofile = () => {
                   <img src={notverifed} alt="notverifedImage" />
                 )}
               </div>
+              {loading ? <Spinner></Spinner> : ""}
+              <h2>Education: {userData?.education}</h2>
+              <h2>Location : {userData?.location}</h2>
+              <h2>Phone Number : {userData?.phone}</h2>
+              <h2>LinkedIn Profile link : {userData?.linkedin}</h2>
               {loading && <Spinner></Spinner>}
               <p>{error && error.message}</p>
               <Profileform></Profileform>
