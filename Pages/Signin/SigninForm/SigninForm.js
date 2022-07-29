@@ -1,10 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { useNavigate, useLocation } from "react-router-dom";
+
 import auth from "../../../Shared/Firebase/Auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
@@ -14,6 +15,7 @@ const SigninForm = () => {
     useSignInWithEmailAndPassword(auth);
 
   const { register, handleSubmit } = useForm();
+  const [userEmail] = useAuthState(auth);
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
@@ -24,10 +26,15 @@ const SigninForm = () => {
     toast(" Successfully login");
   }
 
+  console.log(
+    "🚀 ~ file: SigninForm.js ~ line 24 ~ SigninForm ~ user",
+    user,
+    userEmail
+  );
   // Redirect to that from page
   let navigate = useNavigate();
   let location = useLocation();
-  const [userEmail] = useAuthState(auth);
+
   let from = location.state?.from?.pathname || "/";
   if (user || userEmail) {
     navigate(from, { replace: true });

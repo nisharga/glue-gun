@@ -21,6 +21,7 @@ import Purchase from "./Pages/Purchase/Purchase";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import Blogs from "./Pages/Blogs/Blogs";
 import Payment from "./Shared/Payment/Payment";
+import ManageAllOrder from "./Pages/ManageAllOrder/ManageAllOrder";
 function App() {
   // / font awesome global declear
   const iconList = Object.keys(Icons)
@@ -40,6 +41,10 @@ function App() {
         <Route path="/forgotpass" element={<ForgotPass></ForgotPass>} />
         <Route path="/login" element={<Signin></Signin>} />
         <Route path="/addproduct" element={<AddProduct></AddProduct>} />
+        <Route
+          path="/manageallorder"
+          element={<ManageAllOrder></ManageAllOrder>}
+        />
         <Route path="*" element={<NotFound />} />
         <Route
           path="purchase/:id"
