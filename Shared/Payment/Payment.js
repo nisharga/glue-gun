@@ -1,6 +1,7 @@
 import "./Payment.css";
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import { Navigate, useHistory, useNavigate } from "react-router-dom";
 import {
   CardElement,
   Elements,
@@ -9,8 +10,10 @@ import {
 } from "@stripe/react-stripe-js";
 import PageTitle from "../PageTitle/PageTitle";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 const Payment = () => {
   const id = useParams();
+  const pid = useParams();
   const CARD_OPTIONS = {
     iconStyle: "solid",
     style: {
@@ -161,6 +164,28 @@ const Payment = () => {
         name: "",
       });
     };
+    const navigate = useNavigate();
+    const id = useParams();
+    if (paymentMethod?.id) {
+      fetch(
+        `https://glacial-sierra-36711.herokuapp.com/paymentstatus/${pid.pid}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            paymentStatus: "paid",
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          alert("Ji");
+          toast(`payment Sucessfull,`);
+        });
+    }
 
     return paymentMethod ? (
       <div className="Result">

@@ -31,7 +31,7 @@ const SignupForm = () => {
     await sendEmailVerification();
     await updateProfile({ displayName: username });
     // save signup information in database
-    fetch("http://localhost:5000/user", {
+    fetch("https://glacial-sierra-36711.herokuapp.com/user", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

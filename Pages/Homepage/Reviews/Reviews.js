@@ -3,7 +3,7 @@ import "./Reviews.css";
 import SingleReview from "./SingleReview/SingleReview";
 const Reviews = () => {
   const [review, setReview] = useState();
-  fetch("http://localhost:5000/review")
+  fetch("https://glacial-sierra-36711.herokuapp.com/review")
     .then((response) => response.json())
     .then((data) => setReview(data));
   return (

@@ -15,7 +15,7 @@ const AddreviewForm = ({ email }) => {
     const rating = reivewrating;
     const useremail = email;
     // save review information in database
-    fetch("http://localhost:5000/dashboard/addareview", {
+    fetch("https://glacial-sierra-36711.herokuapp.com/dashboard/addareview", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

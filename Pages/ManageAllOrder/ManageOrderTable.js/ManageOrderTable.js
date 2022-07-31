@@ -4,10 +4,34 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ManageOrderTable = ({ val, index }) => {
-  const { _id, productName, quantity, phone, totalPrice } = val;
-
+  const {
+    _id,
+    productName,
+    quantity,
+    phone,
+    totalPrice,
+    paymentStatus,
+    name,
+    address,
+    shipping,
+  } = val;
+  const handleDelivered = (id) => {
+    toast("Delivery Sucessfull");
+    fetch(`https://glacial-sierra-36711.herokuapp.com/deliverystatus/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        shipping: "Delivered",
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => {});
+  };
   const handleDelet = (id) => {
     confirmAlert({
       title: "Confirm to Cancel Order",
@@ -16,7 +40,7 @@ const ManageOrderTable = ({ val, index }) => {
         {
           label: "Yes",
           onClick: () => {
-            fetch(`http://localhost:5000/myitems/${_id}`, {
+            fetch(`https://glacial-sierra-36711.herokuapp.com/myitems/${id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())
@@ -41,11 +65,22 @@ const ManageOrderTable = ({ val, index }) => {
       <td>{productName}</td>
       <td>{quantity}</td>
       <td>{phone}</td>
-      <td>
-        <Link to={`/dashboard/myorders/payment/${totalPrice}`}>Pay</Link>
+      <td>{name}</td>
+      <td>{address}</td>
+      <td>{paymentStatus}</td>
+      {/* <td>{shipping === "pending_shipping" ? "pending_shipping" : ""}</td> */}
+      <td className="">
+        <div class="input-group mb-3 d-flex justify-content-center">
+          <select class="custom-select" id="inputGroupSelect01">
+            <option value="pending">Pending_Shipping</option>
+            <option value="delivered" onClick={() => handleDelivered(_id)}>
+              Delivered
+            </option>
+          </select>
+        </div>
       </td>
       <td>
-        <button onClick={() => handleDelet("ds")}>
+        <button onClick={() => handleDelet(_id)}>
           <FontAwesomeIcon icon={faTrash} />
         </button>
       </td>

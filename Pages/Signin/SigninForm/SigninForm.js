@@ -26,11 +26,6 @@ const SigninForm = () => {
     toast(" Successfully login");
   }
 
-  console.log(
-    "🚀 ~ file: SigninForm.js ~ line 24 ~ SigninForm ~ user",
-    user,
-    userEmail
-  );
   // Redirect to that from page
   let navigate = useNavigate();
   let location = useLocation();

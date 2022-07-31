@@ -11,7 +11,7 @@ import "./Myprofile.css";
 const Myprofile = () => {
   const [user, loading, error] = useAuthState(auth);
   const [userData, setUserData] = useState();
-  fetch(`http://localhost:5000/user/${user?.email}`)
+  fetch(`https://glacial-sierra-36711.herokuapp.com/user/${user?.email}`)
     .then((response) => response.json())
     .then((data) => setUserData(data[0]))
     .catch((error) => {

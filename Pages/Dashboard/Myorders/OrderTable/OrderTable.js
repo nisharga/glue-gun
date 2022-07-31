@@ -6,8 +6,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { Link } from "react-router-dom";
 
 const OrderTable = ({ val, index }) => {
-  const { _id, productName, totalPrice } = val;
-
+  const { _id, productName, totalPrice, paymentStatus, shipping } = val;
   const handleDelet = (id) => {
     confirmAlert({
       title: "Confirm to Cancel Order",
@@ -16,7 +15,7 @@ const OrderTable = ({ val, index }) => {
         {
           label: "Yes",
           onClick: () => {
-            fetch(`http://localhost:5000/myitems/${_id}`, {
+            fetch(`https://glacial-sierra-36711.herokuapp.com/myitems/${id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())
@@ -41,12 +40,22 @@ const OrderTable = ({ val, index }) => {
       <td>{productName}</td>
       <td>{totalPrice}</td>
       <td>
-        <Link to={`/dashboard/myorders/payment/${totalPrice}`}>Pay</Link>
+        {paymentStatus === "paid" ? (
+          "Paid"
+        ) : (
+          <Link to={`/dashboard/myorders/payment/${totalPrice}/${_id}`}>
+            Pay Now
+          </Link>
+        )}
       </td>
       <td>
-        <button onClick={() => handleDelet("ds")}>
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
+        {paymentStatus !== "paid" ? (
+          <button onClick={() => handleDelet(_id)}>
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+        ) : (
+          shipping
+        )}
       </td>
     </tr>
   );

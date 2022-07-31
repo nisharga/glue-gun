@@ -11,7 +11,7 @@ const GoogleSignIn = () => {
   const [userFormGoogle] = useAuthState(auth);
   if (userFormGoogle) {
     // save signup information in database
-    fetch("http://localhost:5000/user", {
+    fetch("https://glacial-sierra-36711.herokuapp.com/user", {
       method: "PUT", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

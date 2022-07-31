@@ -42,6 +42,8 @@ const OrderForm = ({ data }) => {
         name,
         productName,
         totalPrice,
+        paymentStatus: "unpaid",
+        shipping: "Pending_Shipping",
       }),
     })
       .then((response) => response.json())

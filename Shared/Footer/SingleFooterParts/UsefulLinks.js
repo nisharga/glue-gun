@@ -13,8 +13,8 @@ const UsefulLinks = () => {
             </Link>
           </li>
           <li>
-            <Link to="/about">
-              <i className="fa-solid fa-angles-right"></i> About
+            <Link to="/login">
+              <i className="fa-solid fa-angles-right"></i> Login
             </Link>
           </li>
           <li>

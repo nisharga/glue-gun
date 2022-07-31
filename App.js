@@ -55,7 +55,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="dashboard/myorders/payment/:id"
+          path="dashboard/myorders/payment/:id/:pid"
           element={
             <RequireAuth redirectTo="/login">
               <Payment></Payment>

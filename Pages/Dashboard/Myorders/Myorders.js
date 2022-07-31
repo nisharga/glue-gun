@@ -11,7 +11,7 @@ const Myorders = () => {
   const email = user?.email;
   const [myitems, setmyitems] = useState();
   useEffect(() => {
-    const url = `http://localhost:5000/myitems/${email}`;
+    const url = `https://glacial-sierra-36711.herokuapp.com/myitems/${email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setmyitems(data));
