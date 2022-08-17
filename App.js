@@ -3,7 +3,6 @@ import * as Icons from "@fortawesome/free-solid-svg-icons";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
 import Addareview from "./Pages/Dashboard/Addareview/Addareview";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Myorders from "./Pages/Dashboard/Myorders/Myorders";
