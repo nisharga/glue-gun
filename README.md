@@ -1,5 +1,5 @@
 <h3>Live Website Link: 
-<a href="https://glue-gun-client-side.web.app">Glue-Gun</a></h3>
+<a href="https://glue-gun.netlify.app/">Glue-Gun</a></h3>
 
 <bold>(This code is just src folder, you need to other file to run this in local)</bold>
 
